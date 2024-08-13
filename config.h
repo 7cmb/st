@@ -5,7 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Fira Code Nerd Font Mono:pixelsize=24:antialias=true:autohint=true";
+static char *font = "NotoSansM NFM Med:pixelsize=15:antialias=true:autohint=true";
+
+static char *font2[] = {
+	"Symbola:pixelsize=15:antialias=true:autohint=true",
+//	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true",
+};
 static int borderpx = 2;
 
 /*
@@ -16,7 +21,7 @@ static int borderpx = 2;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/sh";
+static char *shell = "/bin/zsh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -45,7 +50,7 @@ int allowaltscreen = 1;
 
 /* allow certain non-interactive (insecure) window operations such as:
    setting the clipboard text */
-int allowwindowops = 0;
+int allowwindowops = 1;
 
 /*
  * draw latency range in ms - from new content/keypress/etc until drawing.
@@ -94,7 +99,13 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.82;
+float alpha = 0.8;
+
+/* bg opacity */
+//float alpha = 0.8;
+
+/* bg opacity */
+//float alpha = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -119,8 +130,10 @@ static const char *colorname[] = {
   [15] = "#ffffff", /* white   */
 
   /* special colors */
-  [256] = "#282a36", /* background */
-  [257] = "#f8f8f2", /* foreground */
+//  [256] = "#282a36", /* background d*/
+//  [257] = "#f8f8f2", /* foreground d*/
+  [256] = "#424c4c", /* background d*/
+  [257] = "#f8f8f2", /* foreground d*/
 };
 
 
@@ -224,8 +237,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY|ShiftMask,     XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ MODKEY|ShiftMask,     XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY,               XK_Page_Up,     kscrollup,      {.i = 1} },
+	{ MODKEY,               XK_Page_Down,   kscrolldown,    {.i = 1} },
 };
 
 /*
